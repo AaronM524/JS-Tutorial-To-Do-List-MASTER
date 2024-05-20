@@ -29,3 +29,24 @@ if(data){
     id = 0;
 }
 
+//load items to the user's interface
+function loadList(array){
+    array.forEach(function(item){
+        addtoDo(item.name, item.id, item.done, item.trash);
+    
+    });
+}
+
+//clear local storage 
+clear.addEventListener("click", function(){
+    localStorage.clear();
+    location.reload()
+});
+
+//show todays date 
+const options = {weekday : "long", month:"short", day:"numeric"};
+const today = new Date();
+
+dataElement.innerHTML = today.toLocaleDateString("en-US", options);
+
+//add to do function
