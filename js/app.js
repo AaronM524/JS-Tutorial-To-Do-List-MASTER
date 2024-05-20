@@ -4,45 +4,28 @@ const dataElement = document.getElementById("date");
 const list = document.getElementById("list");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 const input = document.getElementById("input");
 
-const element = document.getElementById("element");
-element.insertAdjacentHTML(position, text);
+// Class names
+const CHECK = "fa-check-circle";
+const UNCHECK = "fa-circle-thin";
+const LINE_THROUGH = "lineThrough";
 
-    "beforebegin"
-    "afterbegin"
-    "beforeend"
-    "afterend"
+//Variables
+let LIST
+let id
 
-element.innerHTML(text);
+//get item from local storage
+let data = localStorage.getItem("TODO");
 
 
 
-function addToDo( toDo ) {
-const text = <li class="item">
-    <i class="co fa fa-circle-thin" job="complete"></i>
-    <p class="text"> Drink Coffee </p>
-    <i class="de fa fa-trash-o" job="delete"></i>
-</li>
-
-const position = "beforeend";
-
-list. insertAdjacentHTML(position, text);
+//Check if data is not empty
+if(data){
+    LIST = JSON.parse(data);
+    id = LIST.length; // set the id to the last one in the list
+    loadList(LIST); // load the list to the user interface
+}else{
+    //if data isn't empty
+    LIST = [];
+    id = 0;
 }
-addToDo("Drink Coffee");
-
-document.addEventListener("keyup",function(){
-        if(event.keyCode == 13){
-            const toDo = input.value ;
-            if (toDo) {
-                addToDo();
-            }
-            input.value ="";
-        }
-
-});
-
-
-let LIST = [];
-let id = 0;
-LIST = [{} , {} ,  ];
-
 
