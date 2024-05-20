@@ -103,3 +103,23 @@ function completeToDo(element){
      LIST[element.id].done = LIST[element.id].done ? false : true;
     }
     
+//remove to do 
+function removeToDo(element){
+    element.parentNode.parentNode.removeChild(element.parentNode);
+    LIST[element.id].trash = true; 
+}
+
+
+//target the items created dynamically 
+
+list.addEventListener("click", function(event){
+    const element = event.target;
+    const elementJob = element.attributes.job.value;
+
+    if(elementJob == "complete"){
+        completeToDo(element);
+    } else if (elementJob == "delete"){
+        removeToDo(element);
+    }
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+});
