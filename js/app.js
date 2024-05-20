@@ -67,3 +67,39 @@ function addtoDo(toDo, id, done, trash) {
     list.insertAdjacentHTML(position, item);
 
 }
+
+
+document.addEventListener("keyup",function(event){
+    if(event.keyCode == 13){
+        const toDo = input.value;
+        
+    if(toDo){
+        addtoDo(toDo, id, false, false);
+        
+        LIST.push({
+            name: toDo? 
+            id: id,
+            done: false,
+            trash: false
+        });
+
+        localStorage.setItem("TODO", JSON.stringify(LIST));
+
+        id ++;
+        input.value ="";
+
+
+
+    }
+    input.value ="";
+}
+})
+
+
+function completeToDo(element){
+    element.classList.toggle(CHECK);
+     element.classList.toggle(UNCHECK);
+     element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+     LIST[element.id].done = LIST[element.id].done ? false : true;
+    }
+    
